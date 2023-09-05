@@ -54,9 +54,13 @@ This script checks your code for linting issues and coding standards.
 ## Customization
 You can customize this app by adding your own events and styling. The main code for displaying events can be found in the project files.
 
-Dependencies
+## Dependencies
+
 Next.js: A popular React framework for building web applications.
+
 React: A JavaScript library for building user interfaces.
+
 React DOM: React package for working with the DOM.
-Contributing
+
+## Contributing
 If you'd like to contribute to this project, please fork the repository and create a pull request. We welcome contributions and bug reports.
