@@ -1,18 +1,36 @@
 import Head from "next/head";
 import { getFeaturedEvents } from "@/Dummy";
 import EventList from "@/Components/events/EventList";
-export default function AllEventsPage() {
-	const featuredEvents = getFeaturedEvents();
+import NewsletterRegistration from "@/Components/input/newsletter-registration";
+
+export default function AllEventsPage(props) {
+	const { items } = props;
+	const featuredEvents = items;
+
+	console.log(featuredEvents);
 
 	return (
 		<>
 			<Head>
 				<title>NextJS Events</title>
-				<meta name="desciption" content="Find a lot of events" />
+				<meta name="description" content="Find a lot of events" />
 			</Head>
+
+			<NewsletterRegistration />
+
 			<ul>
 				<EventList items={featuredEvents} />
 			</ul>
 		</>
 	);
+}
+
+export async function getStaticProps() {
+	const events = await getFeaturedEvents();
+
+	return {
+		props: {
+			items: events,
+		},
+	};
 }

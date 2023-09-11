@@ -10,6 +10,7 @@ import Image from "next/image";
 export default function EventItem(props) {
 	const { title, image, location, date, id, description } = props;
 
+
 	const favoritesCtx = useContext(FavoriteContext);
 
 	const itemIsFavorite = favoritesCtx.itemIsFavorite(id);
@@ -38,11 +39,12 @@ export default function EventItem(props) {
 	const formattedAddress = location ? location.replace(", ", "\n") : "";
 
 	const exploreLink = `/events/${id}`;
+	const imagePath = `/${image}`
 
 	return (
 		<>
 			<li key={id} className={classes.item}>
-				<Image src={`/${image}`} alt={title} width={240} height={160} />
+				<Image src={imagePath} alt={title} width={240} height={160} />
 				<div className={classes.content}>
 					<div className={classes.summary}>
 						<h2>{title}</h2>
