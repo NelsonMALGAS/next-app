@@ -2,7 +2,7 @@ import { getFilteredEvents } from "@/Dummy";
 import { useRouter } from "next/router";
 import EventList from "@/Components/events/EventList";
 import ResultsTitle from "@/Components/results-title/results-title";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "@/Components/UI/button";
 import ErrorAlert from "@/Components/UI/error-alert/error-alert";
 
@@ -41,10 +41,24 @@ export default function FilteredEventsPage() {
 		);
 	}
 
-	const filteredEvents = getFilteredEvents({
-		year: numYear,
-		month: numMonth,
-	});
+	const [filteredEvents, setFilteredEvents] = useState([]);
+
+	useEffect(() => {
+		// Fetch filtered events data asynchronously using getFilteredEvents
+		const fetchFilteredEvents = async () => {
+			try {
+				const events = await getFilteredEvents({
+					year: numYear,
+					month: numMonth,
+				});
+				setFilteredEvents(events);
+			} catch (error) {
+				console.error("Error fetching filtered events:", error);
+			}
+		};
+
+		fetchFilteredEvents();
+	}, [numYear, numMonth]);
 
 	if (!filteredEvents || filteredEvents.length === 0) {
 		return (
