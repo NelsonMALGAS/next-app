@@ -7,8 +7,6 @@ export default function AllEventsPage(props) {
 	const { items } = props;
 	const featuredEvents = items;
 
-	console.log(featuredEvents);
-
 	return (
 		<>
 			<Head>

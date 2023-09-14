@@ -1,12 +1,8 @@
 import EventItem from "../EventItem";
-import LoadingSpinner from "../loading/loading-spinner";
 import classes from "./event-list.module.css";
-import { getFilteredEvents } from "@/Dummy";
-import { useContext } from "react";
 
 export default function EventList(props) {
 	const { items } = props;
-
 
 	return (
 		<>
@@ -26,4 +22,3 @@ export default function EventList(props) {
 		</>
 	);
 }
-

@@ -20,7 +20,7 @@ export default function EventDetailPage() {
 				setEvent(eventData);
 			} catch (error) {
 				console.error("Error fetching event:", error);
-				setEvent(null); // Set event to null if there's an error
+				setEvent(null);
 			}
 		};
 
