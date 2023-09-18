@@ -56,7 +56,6 @@ export async function getEventById(id) {
 
 export async function getAllEventIds() {
 	const allEvents = await fetchEvents();
-
 	const eventIds = allEvents.map((event) => event.id);
 
 	return eventIds;

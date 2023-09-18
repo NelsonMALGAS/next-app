@@ -44,7 +44,7 @@ export default function FilteredEventsPage() {
 	const [filteredEvents, setFilteredEvents] = useState([]);
 
 	useEffect(() => {
-		// Fetch filtered events data asynchronously using getFilteredEvents
+		
 		const fetchFilteredEvents = async () => {
 			try {
 				const events = await getFilteredEvents({

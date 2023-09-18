@@ -43,6 +43,7 @@ export default function EventDetailPage(props) {
 // Fetch data at build time
 export async function getStaticProps(context) {
 	const eventId = context.params.eventId;
+	
 	try {
 		const eventData = await getEventById(eventId);
 		if (!eventData) {
