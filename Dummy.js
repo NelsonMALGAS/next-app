@@ -26,8 +26,6 @@ export async function fetchEvents() {
 	}
 }
 
-
-
 export async function getFeaturedEvents() {
 	const events = await fetchEvents();
 	return events.filter((event) => event.isFeatured);
@@ -54,4 +52,12 @@ export async function getFilteredEvents(dateFilter) {
 export async function getEventById(id) {
 	const events = await fetchEvents();
 	return events.find((event) => event.id === id);
+}
+
+export async function getAllEventIds() {
+	const allEvents = await fetchEvents();
+
+	const eventIds = allEvents.map((event) => event.id);
+
+	return eventIds;
 }
