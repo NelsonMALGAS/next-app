@@ -20,11 +20,14 @@ function Comments(props) {
 			fetch(`/api/comments/${eventId}`)
 				.then((resp) => resp.json())
 				.then((data) => {
-					setComments(data.comments);
+					const filteredComments = data.comments.filter(
+						(comment) => comment.eventId === eventId,
+					);
+					setComments(filteredComments);
 					setIsFetchingComments(false);
 				});
 		}
-	}, [showComments]);
+	}, [showComments, eventId]);
 
 	function toggleCommentsHandler() {
 		setShowComments((prevStatus) => !prevStatus);
