@@ -10,7 +10,7 @@ function SelectedFavorites() {
 	if (favoriteCtx.totalFavorites === 0) {
 		return (
 			<section className={classes.content}>
-				<h1 className={classes.none}>The are no favorites Yet</h1>
+				<h1 className={classes.none}>The are no favorites</h1>
 			</section>
 		);
 	}

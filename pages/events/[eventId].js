@@ -9,7 +9,7 @@ import EventContent from "@/Components/event-detail/event-content";
 
 export default function EventDetailPage(props) {
 	const { event, error } = props;
-
+	
 	if (error) {
 		return (
 			<Fragment>
@@ -43,7 +43,7 @@ export default function EventDetailPage(props) {
 // Fetch data at build time
 export async function getStaticProps(context) {
 	const eventId = context.params.eventId;
-	
+
 	try {
 		const eventData = await getEventById(eventId);
 		if (!eventData) {
@@ -58,6 +58,7 @@ export async function getStaticProps(context) {
 				event: eventData,
 				error: false,
 			},
+			revalidate : 600
 		};
 	} catch (error) {
 		return {
@@ -69,12 +70,12 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-	const allEventIds = await getAllEventIds(); 
+	const allEventIds = await getAllEventIds();
 	const paths = allEventIds.map((eventId) => ({
 		params: { eventId },
 	}));
 	return {
 		paths,
-		fallback: false, 
+		fallback: "blocking",
 	};
 }
